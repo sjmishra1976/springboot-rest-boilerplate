@@ -9,21 +9,24 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class StudentController {
 	
-	private final AtomicLong counter = new AtomicLong();
+	//private final AtomicLong counter = new AtomicLong();
 
 	@GetMapping("/student")
 	public Student getStudent(@RequestParam(value = "id", defaultValue = "1") long id) {
+		System.out.println("Student Retrieved with id: "+id));
+		
 		return new Student(id, "firstName","lastName",80);
 	}
 	
 	@PostMapping("/student")
 	public long createStudent(@RequestBody Student stud) {
 		
-		long id = counter.getAndIncrement();
+		//long id = counter.getAndIncrement();
+		long id =stud.id();
 		String fName= stud.firstName();
 		String lName= stud.lastName();
 		int grade= stud.grade();
-		System.out.println("Student Added with Attributes:"+stud.toString());
+		System.out.println("Student Added with Attributes: "+stud.toString());
 		return id;
 	}
 }
