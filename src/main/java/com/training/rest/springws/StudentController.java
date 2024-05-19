@@ -13,7 +13,7 @@ public class StudentController {
 
 	@GetMapping("/student")
 	public Student getStudent(@RequestParam(value = "id", defaultValue = "1") long id) {
-		System.out.println("Student Retrieved with id: "+id));
+		System.out.println("Student Retrieved with id: "+id);
 		
 		return new Student(id, "firstName","lastName",80);
 	}
